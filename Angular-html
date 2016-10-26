@@ -1,0 +1,34 @@
+<h3> Cambiar el Color</h3>
+<input ng-init="color='aqua'" ng-model="color" value="{{color}}" style="background-color:{{color}}"/>
+
+<hr>
+ <!-- Escribimos Un Array -->
+  <h3>Lista de Alumnos</h3>
+ <div>   
+   <div ng-repeat="alumno in alumnos | orderBy:'nombre' ">  
+      {{alumno.nombre}}
+  </div>
+</div>
+
+  
+<hr>
+  <!-- constructor de un formulario -->  
+ <h3> Agrega nuevos Alumnos</h3>
+<div class="borde formulario"> Nombre 
+    <input type="text" ng-model="nuevoAlumno.nombre" > 
+    <button class="center" ng-click="Save()">Guardar</button>
+</div>    
+  
+  
+<hr>    
+ <!-- Buscar Alumnos -->  
+  <h3>Buscar a un Alumno </h3>
+<input ng-model="search.$"  id="search" > 
+<div ng-repeat="amigo in friends | filter:search">
+         <td> {{amigo.name}}  </td>
+       <td> {{amigo.phone}} </td>
+
+</div>
+
+  
+            
