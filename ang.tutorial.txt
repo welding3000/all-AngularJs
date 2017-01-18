@@ -1,0 +1,487 @@
+AngularJS Tutorial
+
+Este tutorial está especialmente diseñado para ayudarle a aprender 
+AngularJS tan rápida y eficientemente como sea posible.
+En primer lugar, usted aprenderá los conceptos básicos de AngularJS:
+directivas, expresiones, filtros, módulos y controladores.
+A continuación, usted aprenderá todo lo que necesita saber acerca de AngularJS:
+Eventos, DOM, las formas, de entrada, validación, HTTP, y mucho más
+
+<div ng-app=""> 
+<p>Input something in the input box:</p>
+<p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+<h1>Hello {{name}}</h1>
+</div>
+
+/* --------------------------------------------------------------------------------- */
+AngularJS Introducción
+
+AngularJS es un marco de JavaScript . Puede ser agregado a una página HTML con una etiqueta <script>.
+AngularJS extiende atributos HTML con las Directivas , y se une a los datos HTML con expresiones .
+AngularJS es un framework JavaScript
+AngularJS es un marco de JavaScript. Es una biblioteca escrito en JavaScript.
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+/* --------------------------------------------------------------------------------- */
+Extiende AngularJS HTML
+AngularJS extiende HTML con NG-directivas .
+El ng-app Directiva define una aplicación AngularJS.
+El ng-modelo de directiva se une el valor de los controles HTML (input, select, textarea) para datos de aplicación.
+El ng-bind Directiva se une datos de la aplicación a la vista HTML.
+
+<div ng-app="">
+<p>Input something in the input box:</p>
+<p>Name: <input type="text" ng-model="name"></p>
+<p ng-bind="name"></p>
+</div>
+
+AngularJS se inicia automáticamente cuando la página web se ha cargado.
+El ng-app directiva indica AngularJS que el elemento <div> es el "dueño" de un AngularJS aplicación .
+El ng-modelo de directiva se une el valor del campo de entrada a la variable de la aplicación nombre .
+El ng-bind Directiva se une el innerHTML del elemento <p> para la variable de aplicación nombre .
+
+AngularJS Directivas
+Como ya se ha visto, AngularJS directivas son atributos HTML con un ng prefijo
+El ng-init Directiva inicializa las variables de aplicación AngularJS
+
+<div ng-app="" ng-init="firstName='John'">
+<p>The name is <span ng-bind="firstName"></span></p>
+</div>
+
+<div data-ng-app="" data-ng-init="firstName='John'">
+<p>The name is <span data-ng-bind="firstName"></span></p>
+</div>
+/* --------------------------------------------------------------------------------- */
+
+Expresiones AngularJS
+AngularJS expresiones se escriben entre llaves dobles: {{}} expresión .
+AngularJS serán los datos de "salida" exactamente donde la expresión se escribe:
+
+<div ng-app="">
+<p>My first expression: {{ 5 + 5 }}</p>
+</div>
+
+AngularJS expresiones se unen los datos AngularJS a HTML de la misma manera como el ng-bind Directiva.
+
+<div ng-app="">
+<p>Input something in the input box:</p>
+<p>Name: <input type="text" ng-model="name"></p>
+<p>{{name}}</p>
+</div>
+
+
+Aplicaciones AngularJS
+AngularJS módulos definen aplicaciones AngularJS.
+AngularJS controladores controlan las aplicaciones AngularJS.
+El ng-app Directiva define la aplicación, el ng-controlador directiva define el controlador.
+
+<div ng-app="myApp" ng-controller="myCtrl">
+First Name: <input type="text" ng-model="firstName"><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+Full Name: {{firstName + " " + lastName}}
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName= "John";
+    $scope.lastName= "Doe";
+});
+</script>
+
+
+
+Expresiones AngularJS
+AngularJS expresiones pueden escribirse entre llaves dobles: .{{ expression }}
+AngularJS expresiones también se pueden escribir en el interior de una directiva: .ng-bind="expression"
+AngularJS resolverán la expresión, y devolver el resultado exactamente donde la expresión se escribe.
+AngularJS expresiones son muy similares a las expresiones de JavaScript: Pueden contener literales, operadores y variables.
+Ejemplo {{5 + 5}} o {{firstName + "" + lastName}}
+
+<div ng-app>
+<p>My first expression: {{ 5 + 5 }}</p>
+</div>
+
+Puede escribir expresiones donde quieras, AngularJS Simplemente resolver la expresión y devolver el resultado.
+Ejemplo: Supongamos AngularJS cambiar el valor de las propiedades CSS.
+Cambiar el color de la caja de entrada por debajo, al cambiar su valor
+
+
+<p>Change the value of the input field:</p>
+<div ng-app="" ng-init="myCol='lightblue'">
+<input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}">
+</div>
+<p>AngularJS resolves the expression and returns the result.</p>
+<p>The background color of the input box will be whatever you write in the input field.</p>
+
+
+números AngularJS
+AngularJS números son como los números de JavaScript
+
+<div ng-app="" ng-init="quantity=1;cost=5">
+<p>Total in dollar: {{ quantity * cost }}</p>
+</div>
+
+El mismo ejemplo usando ng-bind:
+<div ng-app="" ng-init="quantity=1;cost=5">
+<p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
+</div>
+
+AngularJS Cuerdas
+AngularJS cadenas son como cadenas JavaScript:
+
+<div ng-app="" ng-init="firstName='John';lastName='Doe'">
+<p>The full name is: {{ firstName + " " + lastName }}</p>
+</div>
+
+<div ng-app="" ng-init="firstName='John';lastName='Doe'">
+<p>The full name is: <span ng-bind="firstName + ' ' + lastName"></span></p>
+</div>
+
+
+Objetos AngularJS
+AngularJS objetos son como objetos JavaScript:
+
+<div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">
+<p>The name is {{ person.lastName }}</p>
+</div>
+
+AngularJS matrices
+AngularJS matrices son como matrices de JavaScript
+
+<div ng-app="" ng-init="points=[1,15,19,2,40]">
+<p>The third result is {{ points[2] }}</p>
+</div>
+
+<div ng-app="" ng-init="points=[1,15,19,2,40]">
+<p>The third result is <span ng-bind="points[2]"></span></p>
+</div>
+
+
+
+=====================
+AngularJS Módulos
+
+Un módulo de AngularJS define una aplicación.
+La módulo es un contenedor para las diferentes partes de una aplicación.
+El módulo es un contenedor para los controladores de aplicación.
+Controladores siempre pertenecen a un módulo.
+
+
+
+Crear un módulo
+Un módulo se crea mediante el uso de la función AngularJS angular.module
+
+<div ng-app="myApp">...</div>
+<script>
+
+var app = angular.module("myApp", []); 
+</script>
+
+El parámetro "myApp" se refiere a un elemento HTML en el que se ejecutará la aplicación.
+Ahora puede agregar controladores, directivas, filtros y más, para su aplicación AngularJS.
+Adición de un controlador
+Añadir un controlador para su aplicación, y se refieren al controlador con la ng-controllerDirectiva:
+
+<div ng-app="myApp" ng-controller="myCtrl">
+{{ firstName + " " + lastName }}
+</div>
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+});
+</script>
+
+
+Adición de una Directiva
+AngularJS tiene un conjunto de directivas incorporadas que se pueden utilizar para agregar funcionalidad a su aplicación.
+Para una referencia completa, visite nuestro AngularJS Directiva sobre la referencia .
+Además se puede utilizar el módulo para añadir sus propias directivas a sus aplicaciones:
+
+<div ng-app="myApp" w3-test-directive></div>
+
+<script>
+var app = angular.module("myApp", []);
+app.directive("w3TestDirective", function() {
+    return {
+        template : "I was made in a directive constructor!"
+    };
+});
+</script>
+
+Módulos y reguladores de Archivos
+Es común en aplicaciones AngularJS para poner el módulo y los controladores en los archivos de JavaScript.
+En este ejemplo, "myApp.js" contiene una definición de módulo de aplicación, 
+mientras que "myCtrl.js" contiene el controlador
+
+
+Cuando cargar la biblioteca
+Si bien es común en aplicaciones HTML para colocar los scripts en el extremo del 
+<body>elemento, se recomienda cargar la biblioteca AngularJS ya sea en el <head>o en el inicio de la <body>.
+
+Esto se debe a que las llamadas a angular.modulesolo pueden ser compilados después de la biblioteca ha sido cargado.
+
+<div ng-app="myApp" ng-controller="myCtrl">
+{{ firstName + " " + lastName }}
+</div>
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+});
+</script>
+
+<p>It is recommended that you load the AngularJS library either in the HEAD or at the start of the BODY.</p>
+
+_----------------
+AngularJS Directives
+AngularJS le permite extender HTML con nuevos atributos llamados directivas .
+AngularJS tiene un conjunto de directivas incorporadas que ofrece funcionalidad a sus aplicaciones.
+AngularJS también le permite definir sus propias directivas.
+AngularJS Directivas
+AngularJS directivas están extendidos atributos HTML con el prefijo ng-.
+La ng-appDirectiva inicializa una aplicación AngularJS.
+La ng-initDirectiva inicializa los datos de aplicación.
+La ng-modelDirectiva se une el valor de los controles HTML (input, select, textarea) para datos de aplicación.
+Lee sobre todas las directivas AngularJS en nuestros AngularJS referencia Directiva .
+
+
+<div ng-app="" ng-init="firstName='John'">
+<p>Input something in the input box:</p>
+<p>Name: <input type="text" ng-model="firstName"></p>
+<p>You wrote: {{ firstName }}</p>
+</div>
+
+
+El enlace de datos
+La {{ firstName }}expresión, en el ejemplo anterior, es un AngularJS expresión de enlace de datos.
+vinculantes en AngularJS de datos se une AngularJS expresiones con los datos AngularJS.
+{{ firstName }}está unido con ng-model="firstName".
+En el siguiente ejemplo, dos campos de texto están unidos entre sí con dos directivas ng-modelo:
+
+<div data-ng-app="" data-ng-init="quantity=1;price=5">
+<h2>Cost Calculator</h2>
+Quantity: <input type="number" ng-model="quantity">
+Price: <input type="number" ng-model="price">
+<p><b>Total in dollar:</b> {{quantity * price}}</p>
+</div>
+
+La repetición de elementos HTML
+La ng-repeatDirectiva se repite un elemento HTML:
+
+
+<div ng-app="" ng-init="names=['Jani','Hege','Kai']">
+  <p>Looping with ng-repeat:</p>
+  <ul>
+    <li ng-repeat="x in names">
+      {{ x }}
+    </li>
+  </ul>
+</div>
+
+La ng-repeatDirectiva realidad clona elementos HTML una vez para cada elemento de una colección.
+La ng-repeatdirectiva usada en una serie de objetos
+
+<div ng-app="" ng-init="names=[
+{name:'Jani',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}]">
+
+<p>Looping with objects:</p>
+<ul>
+  <li ng-repeat="x in names">
+  {{ x.name + ', ' + x.country }}</li>
+</ul>
+
+</div>
+
+
+La Directiva ng-app
+La ng-appDirectiva define el elemento raíz de una solicitud AngularJS.
+La ng-appdirectiva de auto-arranque (inicializar automáticamente) la aplicación cuando se carga una página web.
+
+La Directiva ng-init
+La ng-initDirectiva define los valores iniciales para una aplicación AngularJS.
+Normalmente, no usará ng-init. Que va a utilizar un controlador o módulo en su lugar.
+Va a aprender más acerca de los controladores y los módulos más tarde.
+
+La Directiva ng-modelo
+La ng-modelDirectiva se une el valor de los controles HTML (input, select, textarea) para datos de aplicación.
+La ng-modeldirectiva también puede:
+
+Proporcionar validación de tipo de datos de la aplicación (número, correo electrónico, es necesario).
+Proporcionar el estado de los datos de aplicación (no válido, sucio, tocado, error).
+Proporcionar clases CSS para elementos HTML.
+elementos HTML se unen a los formularios HTML.
+Más información sobre la ng-modelDirectiva en el siguiente capítulo.
+
+Crear nuevas directivas
+Además de todas las directivas AngularJS incorporados, puede crear sus propias directivas.
+
+Nuevas directivas se crean mediante el uso de la .directivefunción.
+Para invocar la nueva directiva, hacer que un elemento HTML con el mismo nombre de la etiqueta como la nueva directiva.
+Al escribir el nombre de una Directiva, debe utilizar un nombre del caso de camellos, w3TestDirectivepero cuando se la invoca, debe utilizar -el nombre separado, w3-test-directive:
+
+
+<body ng-app="myApp">
+
+<w3-test-directive></w3-test-directive>
+
+<script>
+var app = angular.module("myApp", []);
+app.directive("w3TestDirective", function() {
+    return {
+        template : "<h1>Made by a directive!</h1>"
+    };
+});
+</script>
+
+restricciones
+Le permite restringir las directivas que sólo se invocada por algunos de los métodos.
+
+<body ng-app="myApp">
+
+<w3-test-directive></w3-test-directive>
+
+<div w3-test-directive></div>
+
+<script>
+var app = angular.module("myApp", []);
+app.directive("w3TestDirective", function() {
+    return {
+        restrict : "A",
+        template : "<h1>Made by a directive!</h1>"
+    };
+});
+</script>
+
+<p><strong>Note:</strong> By setting the <strong>restrict</strong> property to "A", only the HTML element with the "w3-test-directive" attribute has invoked the directive.</p>
+
+Los restringir los valores legales son:
+
+E Elemento para el nombre
+A para el atributo
+C para clase
+M para comentarios
+Por defecto el valor es EA, lo que significa que los dos nombres de elementos y atributos nombres pueden invocar la directiva.
+
+AngularJS ng-model Directive
+
+La directiva ng-modelo se une el valor de los controles HTML (input, select, textarea) para datos de aplicación.
+
+La Directiva ng-modelo
+Con la ng-modeldirectiva puede enlazar el valor de un campo de entrada a una variable creada en AngularJS.
+
+
+<div ng-app="myApp" ng-controller="myCtrl">
+Name: <input ng-model="name">
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "John Doe";
+});
+</script>
+
+<p>Use the ng-model directive to bind the value of the input field to a property made in the controller.</p>
+
+La unión de dos vías
+La unión va en ambos sentidos. Si el usuario cambia el valor en el campo de entrada, la propiedad AngularJS también cambiará su valor
+
+
+<div ng-app="myApp" ng-controller="myCtrl">
+Name: <input ng-model="name">
+<h1>You entered: {{name}}</h1>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "John Doe";
+});
+</script>
+
+<p>Change the name inside the input field, and you will see the name in the header changes accordingly.</p>
+
+
+Validar entrada de usuario
+La ng-modelDirectiva puede proporcionar validación de tipo de datos de la aplicación (número, correo electrónico, es necesario):
+
+<form ng-app="" name="myForm">
+    Email:
+    <input type="email" name="myAddress" ng-model="text">
+    <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+</form>
+
+<p>Enter your e-mail address in the input field. AngularJS will display an errormessage if the address is not an e-mail.</p>
+
+
+Estado de la aplicación
+La ng-modeldirectiva puede proporcionar el estado de los datos de aplicación (no válido, sucio, tocado, error):
+
+<form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
+
+Email:
+<input type="email" name="myAddress" ng-model="myText" required>
+<p>Edit the e-mail address, and try to change the status.</p>
+<h1>Status</h1>
+<p>Valid: {{myForm.myAddress.$valid}} (if true, the value meets all criteria).</p>
+<p>Dirty: {{myForm.myAddress.$dirty}} (if true, the value has been changed).</p>
+<p>Touched: {{myForm.myAddress.$touched}} (if true, the field has been in focus).</p>
+
+</form>
+
+Las clases CSS
+La ng-modelDirectiva establece las clases CSS para elementos HTML, en función de su condición
+
+<style>
+input.ng-invalid {
+    background-color: lightblue;
+}
+</style>
+<body>
+
+<form ng-app="" name="myForm">
+    Enter your name:
+    <input name="myName" ng-model="myText" required>
+</form>
+
+<p>Edit the text field and it will get/lose classes according to the status.</p>
+<p><b>Note:</b> A text field with the "required" attribute is not valid when it is empty.</p>
+
+The ng-model directive adds/removes the following classes, according to the status of the form field:
+
+ng-empty
+ng-not-empty
+ng-touched
+ng-untouched
+ng-valid
+ng-invalid
+ng-dirty
+ng-pending
+ng-pristine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
